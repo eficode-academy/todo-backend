@@ -38,7 +38,7 @@ func MakeHTTPHandler(s Service, logger log.Logger) http.Handler {
 		encodeResponse(http.StatusOK),
 		options...,
 	))
-	r.Methods("GET").Path("/{id}").Handler(httptransport.NewServer(
+	r.Methods("GET").Path("/todo/{id}").Handler(httptransport.NewServer(
 		e.GetTodoEndpoint,
 		decodeGetTodoRequest,
 		encodeResponse(http.StatusOK),
@@ -56,13 +56,13 @@ func MakeHTTPHandler(s Service, logger log.Logger) http.Handler {
 		encodeResponse(http.StatusOK),
 		options...,
 	))
-	r.Methods("DELETE").Path("/{id}").Handler(httptransport.NewServer(
+	r.Methods("DELETE").Path("/todo/{id}").Handler(httptransport.NewServer(
 		e.DeleteTodoEndpoint,
 		decodeDeleteTodoRequest,
 		encodeResponse(http.StatusOK),
 		options...,
 	))
-	r.Methods("PUT", "PATCH").Path("/{id}").Handler(httptransport.NewServer(
+	r.Methods("PUT", "PATCH").Path("/todo/{id}").Handler(httptransport.NewServer(
 		e.PatchTodoEndpoint,
 		decodePatchTodoRequest,
 		encodeResponse(http.StatusOK),
