@@ -32,37 +32,37 @@ func MakeHTTPHandler(s Service, logger log.Logger) http.Handler {
 		encodeResponse(http.StatusOK),
 		options...,
 	))
-	r.Methods("GET").Path("/todos").Handler(httptransport.NewServer(
+	r.Methods("GET").Path("/todo").Handler(httptransport.NewServer(
 		e.GetTodosEndpoint,
 		decodeEmptyRequest,
 		encodeResponse(http.StatusOK),
 		options...,
 	))
-	r.Methods("GET").Path("/todos/{id}").Handler(httptransport.NewServer(
+	r.Methods("GET").Path("/{id}").Handler(httptransport.NewServer(
 		e.GetTodoEndpoint,
 		decodeGetTodoRequest,
 		encodeResponse(http.StatusOK),
 		options...,
 	))
-	r.Methods("POST").Path("/todos").Handler(httptransport.NewServer(
+	r.Methods("POST").Path("/todo").Handler(httptransport.NewServer(
 		e.PostTodoEndpoint,
 		decodePostTodoRequest,
 		encodeResponse(http.StatusCreated),
 		options...,
 	))
-	r.Methods("DELETE").Path("/todos").Handler(httptransport.NewServer(
+	r.Methods("DELETE").Path("/todo").Handler(httptransport.NewServer(
 		e.DeleteTodosEndpoint,
 		decodeEmptyRequest,
 		encodeResponse(http.StatusOK),
 		options...,
 	))
-	r.Methods("DELETE").Path("/todos/{id}").Handler(httptransport.NewServer(
+	r.Methods("DELETE").Path("/{id}").Handler(httptransport.NewServer(
 		e.DeleteTodoEndpoint,
 		decodeDeleteTodoRequest,
 		encodeResponse(http.StatusOK),
 		options...,
 	))
-	r.Methods("PUT", "PATCH").Path("/todos/{id}").Handler(httptransport.NewServer(
+	r.Methods("PUT", "PATCH").Path("/{id}").Handler(httptransport.NewServer(
 		e.PatchTodoEndpoint,
 		decodePatchTodoRequest,
 		encodeResponse(http.StatusOK),

@@ -1,6 +1,16 @@
 version: "3.7"
 services:
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ../frontend
+      dockerfile: ./Dockerfile
+    ports:
+      - 80:80
+
   todo-backend:
+    container_name: backend
     image: todo-backend
     build:
       context: ../
@@ -16,7 +26,9 @@ services:
       - TODO_URL=http://todo-backend:8080
     depends_on:
       - todo-backend-db
+
   todo-backend-db:
+    container_name: db
     image: "postgres:12"
     ports:
       - 54321:5432
