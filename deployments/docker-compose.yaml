@@ -23,13 +23,15 @@ services:
       - TODO_DATABASEUSERNAME=todo
       - TODO_DATABASEPASSWORD=todo
       - TODO_DATABASESCHEMA=todo
-      - TODO_URL=http://todo-backend:8080
+      # - TODO_URL=http://todo-backend:8080
+      - TODO_URL=http://localhost/todo
     depends_on:
       - todo-backend-db
 
   todo-backend-db:
     container_name: db
-    image: "postgres:12"
+    # image: "postgres:12"
+    image: bitnami/postgresql:12
     ports:
       - 54321:5432
     environment:
