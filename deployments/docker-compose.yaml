@@ -8,6 +8,9 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - 80:80
+    environment:
+      - BACKEND_HOST=todo-backend
+      - BACKEND_PORT=8080
 
   todo-backend:
     container_name: backend
