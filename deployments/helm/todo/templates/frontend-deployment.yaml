@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   annotations:
     kompose.cmd: kompose convert
-    kompose.version: 1.22.0 (955b78124)
+    kompose.version: 1.22.0 (HEAD)
   creationTimestamp: null
   labels:
     io.kompose.service: frontend
@@ -18,13 +18,18 @@ spec:
     metadata:
       annotations:
         kompose.cmd: kompose convert
-        kompose.version: 1.22.0 (955b78124)
+        kompose.version: 1.22.0 (HEAD)
       creationTimestamp: null
       labels:
         io.kompose.service: frontend
     spec:
       containers:
-        - image: frontend
+        - env:
+            - name: BACKEND_HOST
+              value: todo-backend
+            - name: BACKEND_PORT
+              value: "8080"
+          image: releasepraqma/todo-frontend
           name: frontend
           ports:
             - containerPort: 80

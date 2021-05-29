@@ -3,6 +3,7 @@ services:
 
   frontend:
     container_name: frontend
+    image: releasepraqma/todo-frontend
     build:
       context: ../frontend
       dockerfile: ./Dockerfile
@@ -14,7 +15,7 @@ services:
 
   todo-backend:
     container_name: backend
-    image: todo-backend
+    image: releasepraqma/todo-backend
     build:
       context: ../
       dockerfile: ./build/package/Dockerfile

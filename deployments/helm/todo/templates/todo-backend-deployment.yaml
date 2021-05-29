@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   annotations:
     kompose.cmd: kompose convert
-    kompose.version: 1.22.0 (955b78124)
+    kompose.version: 1.22.0 (HEAD)
   creationTimestamp: null
   labels:
     io.kompose.service: todo-backend
@@ -18,7 +18,7 @@ spec:
     metadata:
       annotations:
         kompose.cmd: kompose convert
-        kompose.version: 1.22.0 (955b78124)
+        kompose.version: 1.22.0 (HEAD)
       creationTimestamp: null
       labels:
         io.kompose.service: todo-backend
@@ -36,8 +36,8 @@ spec:
             - name: TODO_DATABASEUSERNAME
               value: todo
             - name: TODO_URL
-              value: http://todso-backend:8080
-          image: todo-backend
+              value: http://localhost/todo
+          image: releasepraqma/todo-backend
           name: backend
           ports:
             - containerPort: 8080
