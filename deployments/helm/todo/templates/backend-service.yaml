@@ -3,14 +3,15 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: todo-backend
-  name: todo-backend
+    io.kompose.service: backend
+  name: backend
 spec:
   ports:
-    - name: "8902"
-      port: 8902
+    - name: "8080"
+      port: 8080
       targetPort: 8080
   selector:
-    io.kompose.service: todo-backend
+    io.kompose.service: backend
+  type: ClusterIP
 status:
   loadBalancer: {}

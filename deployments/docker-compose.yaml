@@ -10,10 +10,10 @@ services:
     ports:
       - 80:80
     environment:
-      - BACKEND_HOST=todo-backend
+      - BACKEND_HOST=backend
       - BACKEND_PORT=8080
 
-  todo-backend:
+  backend:
     container_name: backend
     image: releasepraqma/todo-backend
     build:
@@ -22,17 +22,15 @@ services:
     ports:
       - 8902:8080
     environment:
-      - TODO_DATABASEHOST=todo-backend-db
+      - TODO_DATABASEHOST=backend-db
       - TODO_DATABASEPORT=5432
       - TODO_DATABASEUSERNAME=todo
       - TODO_DATABASEPASSWORD=todo
       - TODO_DATABASESCHEMA=todo
       # - TODO_URL=http://todo-backend:8080
       - TODO_URL=http://localhost/todo
-    depends_on:
-      - todo-backend-db
 
-  todo-backend-db:
+  backend-db:
     container_name: db
     # image: "postgres:12"
     image: bitnami/postgresql:12

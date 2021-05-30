@@ -10,7 +10,9 @@ spec:
     - name: "80"
       port: 80
       targetPort: 80
+      nodePort: 32123
   selector:
     io.kompose.service: frontend
+  type: {{ .Values.frontend.type }}
 status:
   loadBalancer: {}

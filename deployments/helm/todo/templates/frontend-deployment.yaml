@@ -20,9 +20,9 @@ spec:
       containers:
         - env:
             - name: BACKEND_HOST
-              value: todo-backend
+              value: {{ .Values.frontend.backendHost }}
             - name: BACKEND_PORT
-              value: "8080"
+              value: {{ .Values.frontend.backendPort | quote }}
           image: releasepraqma/todo-frontend
           name: frontend
           ports:

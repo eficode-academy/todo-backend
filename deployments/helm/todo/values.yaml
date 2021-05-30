@@ -1,0 +1,24 @@
+frontend:
+  # name of backend service
+  backendHost: backend
+  # port of backend service
+  backendPort: 8080
+  # what service type
+  type: NodePort
+
+backend:
+  dbHost: backend-db
+  dbPort: 5432
+  dbUsername: todo
+  dbPassword: todo
+  dbSchema: todo
+  ## this variable is bugged, it works if you hardcode the public
+  ## facing endpoint of the frontend like below, but otherwise not
+  ## backendURL: http://34.78.240.147:32123/todo
+  ## something weird is going on in the front end ...
+  backendURL: foobar
+
+db:
+  dbName: todo
+  dbUsername: todo
+  dbPassword: todo

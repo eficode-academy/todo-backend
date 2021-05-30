@@ -3,34 +3,34 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: todo-backend
-  name: todo-backend
+    io.kompose.service: backend
+  name: backend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: todo-backend
+      io.kompose.service: backend
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: todo-backend
+        io.kompose.service: backend
     spec:
       containers:
         - env:
             - name: TODO_DATABASEHOST
-              value: todo-backend-db
-            - name: TODO_DATABASEPASSWORD
-              value: todo
+              value: {{ .Values.backend.dbHost }}
             - name: TODO_DATABASEPORT
-              value: "5432"
-            - name: TODO_DATABASESCHEMA
-              value: todo
+              value: {{ .Values.backend.dbPort | quote }}
             - name: TODO_DATABASEUSERNAME
-              value: todo
+              value: {{ .Values.backend.dbUsername }}
+            - name: TODO_DATABASEPASSWORD
+              value: {{ .Values.backend.dbPassword }}
+            - name: TODO_DATABASESCHEMA
+              value: {{ .Values.backend.dbSchema }}
             - name: TODO_URL
-              value: http://localhost/todo
+              value: {{ .Values.backend.backendURL }}
           image: releasepraqma/todo-backend
           name: backend
           ports:
